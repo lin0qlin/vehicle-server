@@ -43,10 +43,14 @@ curl -v localhost:8080/vehicles
 curl -v  -XDELETE localhost:8080/vehicles/${vehicle_id}
 ```
 
-# Lancer le serveur de base de données (si il n'existe pas déja!)
+
+
+
+#### Lancer le serveur de base de données (si il n'existe pas déja!)
+```bash
 docker run -d -name vehicle-database -e POSTGRES_USER=vehicle -e POSTGRES_PASSWORD=vehicle -e POSTGRES_DB=vehicle -p 5432:5432 postgis/postgis:16-3.4-alpine
-# Compile le serveur de Typescript vers Javascript
+```
+#### Compile le serveur de Typescript vers Javascript
 npx tsc
-# Lance le serveur javascript
+#### Lance le serveur javascript
 node dist/index.js
-# Vous pouvez ensuite rejouer les requètes du README!
