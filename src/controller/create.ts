@@ -26,8 +26,8 @@ export class CreateVehicleController {
       shortcode: req.body.shortcode,
       battery: req.body.battery,
       position: {
-        latitude: req.body.longitude,
-        longitude: req.body.latitude,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
       },
     });
 
@@ -38,7 +38,7 @@ export class CreateVehicleController {
 function validateRequestPayload(req: CreateVehiclePayload): string[] {
   const violations :string[] = []
 
-  if (req.shortcode.length != 6) {
+  if (req.shortcode.length != 4) {
     violations.push("Shortcode must be only 4 characters long");
   }
 
@@ -56,4 +56,3 @@ function validateRequestPayload(req: CreateVehiclePayload): string[] {
 
   return violations;
 }
-

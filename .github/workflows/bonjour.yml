@@ -91,5 +91,7 @@ jobs:
         run: npm run build
       - name: Run Lint
         run: npm run lint
+      - name: Run tests
+        run: npm run test_jest
       - name: List dist output
         run: ls dist/
