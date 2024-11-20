@@ -38,18 +38,56 @@
 #       - run: cat README.md | cowsay
 
 
-name: Bonjour
+# name: Bonjour
+# on:
+#   - push
+# jobs:
+#   dire_bonjour:
+#     runs-on: ubuntu-22.04
+#     steps:
+#       - uses: actions/checkout@v4 # Récupère le contenu du dépôt correspondant au commit du workflow en cours
+#       - uses: juliangruber/read-file-action@v1
+#         id: readfile
+#         with:
+#           path: ./README.md
+#       - uses: Code-Hex/neo-cowsay-action@v1
+#         with:
+#           message: ${{ steps.readfile.outputs.content }}
+
+
+# name: Bonjour
+# on:
+#   - push
+# jobs:
+#   dire_bonjour:
+#     runs-on: ubuntu-22.04
+#     steps:
+#       - uses: actions/checkout@v4 # Récupère le contenu du dépôt correspondant au commit du workflow en cours
+#       - uses: juliangruber/read-file-action@v1
+#         id: readfile
+#         with:
+#           path: ./README.md
+#       - uses: Code-Hex/neo-cowsay-action@v1
+#         with:
+#           message: ${{ steps.readfile.outputs.content }}
+
+
+name: Vehicle Server CI
 on:
   - push
 jobs:
-  dire_bonjour:
+  ci:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4 # Récupère le contenu du dépôt correspondant au commit du workflow en cours
-      - uses: juliangruber/read-file-action@v1
-        id: readfile
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Setup Node
+      - uses: actions/setup-node@v4
         with:
-          path: ./README.md
-      - uses: Code-Hex/neo-cowsay-action@v1
-        with:
-          message: ${{ steps.readfile.outputs.content }}
+          node-version: '20.17.x'
+      - name: Check Node Version
+        run: node --version
+      - name: Build application
+        run: npm run build
+      - name: List dist output
+        run: ls dist/
