@@ -74,24 +74,19 @@
 
 name: Vehicle Server CI
 on:
-  push:
+  - push
 jobs:
-  ci:
+  IntegrationContinue :
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
+        uses : actions/checkout@v4
+      - name: Node 
         uses: actions/setup-node@v4
         with:
           node-version: '20.17.x'
-
-      - name: Check Node Version
-        run: node --version
-
-      - name: Build application
+      - run: npm ci
+      - name: Build
         run: npm run build
-
-      - name: List dist output
+      - name: List dist outcome
         run: ls dist/
