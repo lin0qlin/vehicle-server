@@ -40,12 +40,12 @@ curl -v localhost:8080/vehicles
 #### Delete a Vehicle
 
 ```bash
-curl -v  -XDELETE localhost:8080/vehicles/${vehicle_id}
+80/vehicles/${vehicle_id}
 ```
 
 
 
-
+curl -v  -XDELETE localhost:80
 #### Lancer le serveur de base de données (si il n'existe pas déja!)
 ```bash
 docker run -d -name vehicle-database -e POSTGRES_USER=vehicle -e POSTGRES_PASSWORD=vehicle -e POSTGRES_DB=vehicle -p 5432:5432 postgis/postgis:16-3.4-alpine
