@@ -75,6 +75,7 @@
 name: Vehicle Server CI
 on:
   - push
+  - pull_request
 jobs:
   IntegrationContinue :
     runs-on: ubuntu-22.04
